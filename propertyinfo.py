@@ -79,8 +79,10 @@ async def propertyinfo(taskvars):
             # resobj = {'RESOBJ':{'value':json.dumps(retval), 'type':"Object", 'valueInfo':{'objectTypeName':"com.camunda.SomeClass",'serializationDataFormat':"application/json"}}}
             return {'data':retval}
 
+    except httpx.ReadTimeout as e:
+        raise WorkerError(f"propertyinfo worker raised httpx.ReadTimeout: {traceback.format_exc()}", retry_in=10)       # Timeout. Try again in 10 seconds
     except Exception as e:
-        raise WorkerError(f"fetchFastighetInfo worker fatal error: {traceback.format_exc()}")       # Okänt fel
+        raise WorkerError(f"propertyinfo worker fatal error: {traceback.format_exc()}", retries=0)       # Unknow error. Don't try again
 
 
 async def fetchHelper(client,url,headers,params,payload):
