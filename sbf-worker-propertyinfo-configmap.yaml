@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sbf-worker-propertyinfo-config
+  namespace: camunda-workers
+data:
+  FBSERVICE: <fbservice proxy>  # Set to correct value
+  FB_DATABASE: <FB database>    # Set to correct value
