@@ -19,7 +19,7 @@ from zeebe_grpc.gateway_pb2 import (
 """ 
 Environment
 """
-ZEEBE_ADDRESS = os.getenv('ZEEBE_ADDRESS',"camunda8-zeebe-gateway:26500")
+ZEEBE_ADDRESS = os.getenv('ZEEBE_ADDRESS',"camunda-zeebe-gateway.camunda-zeebe:26500")
 
 SIGTERM = False     # Mutable. Set to True when SIGTERM or SIGINT is recieved
 

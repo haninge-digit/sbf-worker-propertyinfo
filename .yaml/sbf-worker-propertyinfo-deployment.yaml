@@ -23,7 +23,7 @@ spec:
             - name: DEBUG
               value: 'false'  # Change to 'true' for debugging
             - name: ZEEBE_ADDRESS
-              value: camunda8-zeebe-gateway.camunda8:26500
+              value: camunda-zeebe-gateway.camunda-zeebe:26500
             - name: FBSERVICE
               valueFrom:
                 configMapKeyRef:
