@@ -1,22 +1,22 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: sbf-worker-propertyinfo
+  name: propertyinfo
   namespace: camunda-workers
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sbf-worker-propertyinfo
+      app: propertyinfo
   template:
     metadata:
       labels:
-        app: sbf-worker-propertyinfo
+        app: propertyinfo
     spec:
       imagePullSecrets:
       - name: ghcr-pull-secret
       containers:
-        - name: sbf-worker-propertyinfo
+        - name: propertyinfo
           image: ghcr.io/haninge-digit/sbf-worker-propertyinfo:main   # Set tag to "lab" for lab versions and "latest" for production versions
           imagePullPolicy: Always
           env:
@@ -27,22 +27,22 @@ spec:
             - name: FBSERVICE
               valueFrom:
                 configMapKeyRef:
-                  name: sbf-worker-propertyinfo-config
+                  name: propertyinfo-config
                   key: FBSERVICE
             - name: FB_DATABASE
               valueFrom:
                 configMapKeyRef:
-                  name: sbf-worker-propertyinfo-config
+                  name: propertyinfo-config
                   key: FB_DATABASE
             - name: FB_USER
               valueFrom:
                 secretKeyRef:
-                  name: sbf-worker-propertyinfo-secret
+                  name: propertyinfo-secret
                   key: FB_USER
             - name: FB_PASSWD
               valueFrom:
                 secretKeyRef:
-                  name: sbf-worker-propertyinfo-secret
+                  name: propertyinfo-secret
                   key: FB_PASSWD
           resources:    # Might need to be tailored
             limits:
