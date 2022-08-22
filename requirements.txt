@@ -1,2 +1,2 @@
-zeebe-grpc==8.0.4
+zeebe-grpc==8.0.4.post1
 httpx==0.23.0
